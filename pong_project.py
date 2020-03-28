@@ -161,8 +161,10 @@ while True:
     pygame.draw.ellipse(screen, light_grey, ball)
 
     font = pygame.font.SysFont('calibri', 64)
-    score = font.render(f"{score1}  :  {score2}", True, (255, 255, 255))
-    screen.blit(score, (screen_width/2 - 42, 15))
+
+    score = font.render(f"{score1}    {score2}", True, (255, 255, 255))
+    size(score)
+    screen.blit(score, (screen_width/2 - 60, 15))
 
 
     pygame.display.flip()
