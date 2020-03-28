@@ -163,7 +163,6 @@ while True:
     font = pygame.font.SysFont('calibri', 64)
 
     score = font.render(f"{score1}    {score2}", True, (255, 255, 255))
-    size(score)
     screen.blit(score, (screen_width/2 - 60, 15))
 
 
