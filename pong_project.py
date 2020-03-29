@@ -80,9 +80,10 @@ screen_height = 900
 screen = pygame.display.set_mode((screen_width, screen_height), pygame.FULLSCREEN)
 pygame.display.set_caption('Pong')
 
-# Colors
+# Colors and fonts
 light_grey = (236, 236, 236)
 bg_color = pygame.Color('black')
+font = pygame.font.SysFont('calibri', 64)
 
 # Game Rectangles
 ball = pygame.Rect(screen_width / 2 - 15, screen_height / 2 - 15, 30, 30)
@@ -101,6 +102,8 @@ if computer == 1:
 else:
     player2_speed = 0
 
+onzin = pygame.K_UP
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT or event.type == pygame.KEYDOWN and event.key == pygame.K_q:
@@ -108,7 +111,7 @@ while True:
                 sys.exit()
         # player 1 up, down, left, right
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP:
+            if event.key == onzin:
                 player1_speed_y -= speed
             if event.key == pygame.K_DOWN:
                 player1_speed_y += speed
@@ -160,11 +163,8 @@ while True:
     pygame.draw.rect(screen, light_grey, player2)
     pygame.draw.ellipse(screen, light_grey, ball)
 
-    font = pygame.font.SysFont('calibri', 64)
-
     score = font.render(f"{score1}    {score2}", True, (255, 255, 255))
     screen.blit(score, (screen_width/2 - 60, 15))
-
 
     pygame.display.flip()
     clock.tick(200)
